@@ -4,8 +4,8 @@
 
 | Phase | Title | Focus Area | Status |
 | :--- | :--- | :--- | :--- |
-| **Phase 1** | Data Pipeline & Temporal Partitioning | Dataset ingestion, preprocessing, and chronological train/calib/test split | Ready |
-| **Phase 2** | Controlled Distribution Shift Suite | Covariate, subpopulation, label ratio, and temporal shift generators | Planned |
+| **Phase 1** | Data Pipeline & Temporal Partitioning | Dataset ingestion, preprocessing, and chronological train/calib/test split | **Complete** |
+| **Phase 2** | Controlled Distribution Shift Suite | Covariate, subpopulation, label ratio, and temporal shift generators | Ready |
 | **Phase 3** | Baseline Classifiers Training | Logistic Regression, Random Forest, LightGBM, and Tabular MLP | Planned |
 | **Phase 4** | Uncertainty Quantification & Calibration | Platt/Isotonic calibration, ensemble variance, and conformal prediction | Planned |
 | **Phase 5** | Risk-Aware Selective Classification | Risk-gated decision engine, abstention thresholds, and triage queue | Planned |
