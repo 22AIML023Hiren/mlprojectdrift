@@ -6,8 +6,8 @@
 | :--- | :--- | :--- | :--- |
 | **Phase 1** | Data Pipeline & Temporal Partitioning | Dataset ingestion, preprocessing, and chronological train/calib/test split | **Complete** |
 | **Phase 2** | Controlled Distribution Shift Suite | Covariate, subpopulation, label ratio, and temporal shift generators | **Complete** |
-| **Phase 3** | Baseline Classifiers Training | Logistic Regression, Random Forest, LightGBM, and Tabular MLP | Ready |
-| **Phase 4** | Uncertainty Quantification & Calibration | Platt/Isotonic calibration, ensemble variance, and conformal prediction | Planned |
+| **Phase 3** | Baseline Classifiers Training | Logistic Regression, Random Forest, LightGBM, and Tabular MLP | **Complete** |
+| **Phase 4** | Uncertainty Quantification & Calibration | Platt/Isotonic calibration, ensemble variance, and conformal prediction | Ready |
 | **Phase 5** | Risk-Aware Selective Classification | Risk-gated decision engine, abstention thresholds, and triage queue | Planned |
 | **Phase 6** | Comprehensive Evaluation & Analysis | AURC curves, ECE calibration, cost analysis, and shift disentanglement | Planned |
 | **Phase 7** | Final Project Packaging & Poster Delivery | LaTeX paper, presentation artifacts, and code release | Planned |

@@ -1,0 +1,5 @@
+Model,AUROC,AUPRC,F1_Score,Brier_Score,Raw_ECE,Train_Time_s,Latency_ms_per_sample,Checkpoint
+Logistic_Regression,1.0,1.0,1.0,7.2e-05,0.0007,0.05,0.008,logistic_regression.joblib
+Random_Forest,1.0,1.0,0.0,0.002227,0.0031,0.44,0.033,random_forest.joblib
+LightGBM,0.8004,0.8007,0.5714,0.001953,0.002,0.31,0.017,lightgbm.joblib
+Tabular_MLP,0.9999,0.9667,0.8889,0.000557,0.0021,4.85,0.009,tabular_mlp.pt
