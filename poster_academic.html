@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk-Aware Machine Learning Under Distribution Shift - Academic Poster (Print-Ready)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card-bg: #f8fafc;
+      --card-border: #cbd5e1;
+      --navy: #0f172a;
+      --accent-blue: #0284c7;
+      --accent-teal: #0d9488;
+      --accent-indigo: #4f46e5;
+      --accent-amber: #d97706;
+      --accent-emerald: #059669;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+    }
+
+    @page {
+      size: A3 landscape;
+      margin: 8mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f1f5f9;
+      color: var(--text-main);
+      line-height: 1.36;
+      font-size: 12.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 12px;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @media print {
+      body {
+        height: 100%;
+        overflow: visible;
+        padding: 0;
+        background-color: #ffffff !important;
+      }
+
+      .poster-container {
+        height: 100vh !important;
+      }
+    }
+
+    .poster-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* HEADER BANNER */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      flex-shrink: 0;
+    }
+
+    .header-titles {
+      max-width: 63%;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 2px 9px;
+      border-radius: 9999px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 5px;
+    }
+
+    h1.project-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    p.project-subtitle {
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .team-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 8px 14px;
+      min-width: 440px;
+      backdrop-filter: blur(4px);
+    }
+
+    .team-box-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #93c5fd;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 3px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 12px;
+    }
+
+    .team-member {
+      font-size: 11.5px;
+      line-height: 1.25;
+    }
+
+    .member-name {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .member-email {
+      font-size: 10.5px;
+      color: #cbd5e1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* FOUR QUADRANTS GRID */
+    .quadrants-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .quadrant {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .q1 {
+      border-top: 4px solid var(--accent-blue);
+    }
+
+    .q2 {
+      border-top: 4px solid var(--accent-teal);
+    }
+
+    .q3 {
+      border-top: 4px solid var(--accent-indigo);
+    }
+
+    .q4 {
+      border-top: 4px solid var(--accent-amber);
+    }
+
+    .quadrant-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e2e8f0;
+      flex-shrink: 0;
+    }
+
+    .quadrant-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .q1 .quadrant-title {
+      color: var(--accent-blue);
+    }
+
+    .q2 .quadrant-title {
+      color: var(--accent-teal);
+    }
+
+    .q3 .quadrant-title {
+      color: var(--accent-indigo);
+    }
+
+    .q4 .quadrant-title {
+      color: var(--accent-amber);
+    }
+
+    .quadrant-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 1px solid #e2e8f0;
+    }
+
+    .quadrant-body {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+      justify-content: space-between;
+      min-height: 0;
+    }
+
+    h3.subhead {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    h3.subhead::before {
+      content: "";
+      display: inline-block;
+      width: 3.5px;
+      height: 9px;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .q1 h3.subhead {
+      color: var(--accent-blue);
+    }
+
+    .q2 h3.subhead {
+      color: var(--accent-teal);
+    }
+
+    .q3 h3.subhead {
+      color: var(--accent-indigo);
+    }
+
+    .q4 h3.subhead {
+      color: var(--accent-amber);
+    }
+
+    p,
+    li {
+      font-size: 11.2px;
+      color: var(--text-muted);
+      line-height: 1.34;
+    }
+
+    strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style-position: inside;
+      padding-left: 1px;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    .highlight-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 6px 10px;
+    }
+
+    /* Q1 specifics */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    /* Q2 Data specifics */
+    .dataset-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dataset-table th {
+      background: #f1f5f9;
+      color: #334155;
+      text-align: left;
+      padding: 3.5px 7px;
+      font-weight: 600;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .dataset-table td {
+      padding: 3.5px 7px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+
+    .dataset-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .code-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #0369a1;
+    }
+
+    /* Q3 Workflow Diagram */
+    .pipeline-diagram {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+    }
+
+    .pipe-step {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 5px;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .pipe-step.active {
+      border-color: var(--accent-indigo);
+      background: #eef2ff;
+    }
+
+    .pipe-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pipe-desc {
+      font-size: 8.8px;
+      color: #64748b;
+      margin-top: 1px;
+    }
+
+    .pipe-arrow {
+      color: var(--accent-indigo);
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    /* Q4 Metrics & Criteria */
+    .metric-tags {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+
+    .metric-tag {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 5px;
+      padding: 4px 6px;
+      font-size: 10px;
+    }
+
+    .metric-tag-name {
+      font-weight: 700;
+      color: #b45309;
+      display: block;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    .metric-tag-desc {
+      font-size: 9px;
+      color: #475569;
+      line-height: 1.25;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .success-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      padding: 6px 9px;
+    }
+
+    .success-box-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .math-formula {
+      font-family: 'JetBrains Mono', monospace;
+      color: #0369a1;
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="poster-container">
+
+    <!-- HEADER -->
+    <header>
+      <div class="header-titles">
+        <div class="badge-course">Machine Learning Course Project Proposal &bull; Fall 2026</div>
+        <h1 class="project-title">Risk-Aware Machine Learning Under Distribution Shift</h1>
+        <p class="project-subtitle">Epistemic Uncertainty Quantification &amp; Selective Classification in Financial
+          Tabular Streams</p>
+      </div>
+
+      <!-- TEAM DETAILS (CUSTOMIZABLE PLACEHOLDERS) -->
+      <div class="team-box">
+        <div class="team-box-title">
+          <span>Project Team</span>
+          <span style="color: #94a3b8; font-weight: normal;">3 Members</span>
+        </div>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-name">Jay Lakkad</div>
+            <div class="member-email">M26CSE005</div>
+          </div>
+          <div class="team-member">
+            <div class="member-name">Hiren Modhvadia</div>
+            <div class="member-email">M26CSA012</div>
+          </div>
+          <div class="team-member">
+            <div class="member-name">Dev Pandya</div>
+            <div class="member-email">M26CSE003</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- FOUR QUADRANTS GRID -->
+    <div class="quadrants-grid">
+
+      <!-- QUADRANT 1: PROBLEM, MOTIVATION AND IMPACT -->
+      <section class="quadrant q1">
+        <div class="quadrant-header">
+          <div class="quadrant-title">
+            <span>Quadrant 1</span>
+            <span>&bull;</span>
+            <span>Problem, Motivation and Impact</span>
+          </div>
+          <div class="quadrant-badge">Foundations &amp; Scope</div>
+        </div>
+        <div class="quadrant-body">
+          <div class="highlight-card">
+            <h3 class="subhead">The Core Problem</h3>
+            <p>
+              Standard supervised ML relies on the <strong>i.i.d. assumption</strong> (<span
+                class="math-formula">P<sub>train</sub>(X,Y) = P<sub>test</sub>(X,Y)</span>). In high-stakes financial
+              domains (fraud detection, credit scoring), this assumption fails due to evolving attacker tactics,
+              macroeconomic swings, and temporal shifts. High-capacity models make <strong>catastrophic, overconfident
+                errors</strong> on shifted data without self-awareness of their unreliability.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="subhead">Limitations of Current Practice</h3>
+            <ul>
+              <li><strong>Poor Calibration Under Shift:</strong> Raw softmax or tree leaf probabilities are uncalibrated
+                out-of-distribution (OOD), yielding high confidence on incorrect guesses.</li>
+              <li><strong>Noise vs. Novelty Conflation:</strong> Conventional models fail to separate aleatoric noise
+                (feature overlap) from epistemic uncertainty (novel distribution spaces).</li>
+              <li><strong>OOD &ne; Decision Risk:</strong> Distance-based OOD detectors flag unfamiliar points
+                regardless of whether the prediction itself is safely separable.</li>
+            </ul>
+          </div>
+
+          <div class="impact-grid">
+            <div class="highlight-card">
+              <h3 class="subhead">Beneficiaries</h3>
+              <p><strong>Fraud Analysts &amp; Risk Teams:</strong> Workload reduced by auto-clearing safe transactions
+                and routing ambiguous ones to triage.<br>
+                <strong>Consumers:</strong> Minimized false card declines and zero-day fraud losses.
+              </p>
+            </div>
+            <div class="highlight-card">
+              <h3 class="subhead">Scientific &amp; Practical Impact</h3>
+              <p>Formalizes selective classification for tabular data, enabling a <strong>risk-aware
+                  human-in-the-loop</strong> paradigm that slashes shift-induced fraud losses while automating &gt;85%
+                of volume.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUADRANT 2: DATASET SPECIFICATIONS -->
+      <section class="quadrant q2">
+        <div class="quadrant-header">
+          <div class="quadrant-title">
+            <span>Quadrant 2</span>
+            <span>&bull;</span>
+            <span>Dataset &amp; Controlled Shift Suite</span>
+          </div>
+          <div class="quadrant-badge">Data Benchmark</div>
+        </div>
+        <div class="quadrant-body">
+          <table class="dataset-table">
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Benchmark Details (ULB Credit Card Fraud Benchmark)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Data Type &amp; Modality</strong></td>
+                <td>Tabular financial transactions (continuous numerical features)</td>
+              </tr>
+              <tr>
+                <td><strong>Dataset Size</strong></td>
+                <td><strong>284,807 transactions</strong> recorded over 48 hours; 30 input features</td>
+              </tr>
+              <tr>
+                <td><strong>Classes &amp; Imbalance</strong></td>
+                <td>Binary: <strong>492 frauds (0.172%)</strong> vs 284,315 legitimate (99.828%)</td>
+              </tr>
+              <tr>
+                <td><strong>Features</strong></td>
+                <td><span class="code-pill">Time</span>, <span class="code-pill">Amount</span>, and 28 anonymized PCA
+                  components (<span class="code-pill">V1</span>–<span class="code-pill">V28</span>)</td>
+              </tr>
+              <tr>
+                <td><strong>Working Link</strong></td>
+                <td><a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud"
+                    target="_blank">kaggle.com/datasets/mlg-ulb/creditcardfraud</a> (Dal Pozzolo et al., 2015)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div>
+            <h3 class="subhead">Representative Data Sample Snippet</h3>
+            <table class="dataset-table" style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px;">
+              <thead>
+                <tr>
+                  <th>Time(s)</th>
+                  <th>V1</th>
+                  <th>V2</th>
+                  <th>V3</th>
+                  <th>Amount(€)</th>
+                  <th>Class</th>
+                  <th>Protocol Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0.0</td>
+                  <td>-1.3598</td>
+                  <td>-0.0728</td>
+                  <td>2.5363</td>
+                  <td>149.62</td>
+                  <td>0</td>
+                  <td>Normal Legitimate (ID)</td>
+                </tr>
+                <tr>
+                  <td>541.0</td>
+                  <td>-2.3122</td>
+                  <td>1.9519</td>
+                  <td>-1.6099</td>
+                  <td>0.00</td>
+                  <td>1</td>
+                  <td>Actual Fraud Record</td>
+                </tr>
+                <tr>
+                  <td>472.0</td>
+                  <td>-3.0435</td>
+                  <td>3.1573</td>
+                  <td>-3.1674</td>
+                  <td>529.00</td>
+                  <td>1</td>
+                  <td>High-Value Attack (Shift)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="highlight-card">
+            <h3 class="subhead">Controlled Shift Injection Protocol</h3>
+            <p><strong>Split:</strong> Chronological 70% Train (199k), 15% Calib/Val (42k), 15% ID Test (42k).<br>
+              <strong>Shifts:</strong> (1) <em>Covariate Shift:</em> Gaussian jitter on key features V1–V4; (2)
+              <em>Subpopulation Shift:</em> High-amount tail strata (&gt;90th pct); (3) <em>Prevalence Shift:</em> Skew
+              fraud rate 0.17% &rarr; 2.5%; (4) <em>Temporal Drift:</em> Final 8-hr slice. <em>Ethics:</em> Anonymized
+              PCA, zero PII.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUADRANT 3: PROPOSED WORK AND CONTRIBUTIONS -->
+      <section class="quadrant q3">
+        <div class="quadrant-header">
+          <div class="quadrant-title">
+            <span>Quadrant 3</span>
+            <span>&bull;</span>
+            <span>Proposed Work &amp; Key Contributions</span>
+          </div>
+          <div class="quadrant-badge">Methodology</div>
+        </div>
+        <div class="quadrant-body">
+          <!-- PIPELINE DIAGRAM -->
+          <div class="pipeline-diagram">
+            <div class="pipe-step">
+              <div class="pipe-title">1. Base Classifiers</div>
+              <div class="pipe-desc">LogReg, RF, LightGBM, Tab-MLP</div>
+            </div>
+            <div class="pipe-arrow">&rarr;</div>
+            <div class="pipe-step active">
+              <div class="pipe-title">2. Uncertainty Engine</div>
+              <div class="pipe-desc">Isotonic, Conformal, Ensemble Var</div>
+            </div>
+            <div class="pipe-arrow">&rarr;</div>
+            <div class="pipe-step">
+              <div class="pipe-title">3. Risk Scoring</div>
+              <div class="pipe-desc">Risk = f(Confidence, Disagreement)</div>
+            </div>
+            <div class="pipe-arrow">&rarr;</div>
+            <div class="pipe-step">
+              <div class="pipe-title">4. Gated Decision</div>
+              <div class="pipe-desc">Accept (&le;&tau;) vs Flag for Review (&gt;&tau;)</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="subhead">Core Algorithms &amp; Baselines</h3>
+            <ul>
+              <li><strong>Predictors:</strong> LightGBM, Random Forest, Logistic Regression, Tabular Deep Ensemble.</li>
+              <li><strong>Uncertainty Estimators:</strong> (a) <em>Calibration:</em> Isotonic Regression &amp; Platt
+                Scaling; (b) <em>Ensemble Disagreement:</em> Inter-tree variance <span
+                  class="math-formula">U<sub>ens</sub> = (1/M)&Sigma;(p̂<sub>m</sub> - p̄)<sup>2</sup></span>; (c)
+                <em>Conformal Prediction:</em> Non-conformity sets with coverage guarantee <span class="math-formula">1
+                  - &alpha;</span>.</li>
+              <li><strong>Baselines:</strong> (1) Vanilla Softmax with static 0.5 threshold; (2) Random deferral; (3)
+                Isolation Forest OOD filter.</li>
+            </ul>
+          </div>
+
+          <div class="highlight-card">
+            <h3 class="subhead">Key Proposed Contributions (Specific &amp; Distinct)</h3>
+            <ul>
+              <li><strong>C1. Tabular Shift Benchmark Suite:</strong> Standardized multi-axis synthetic &amp; temporal
+                shift generation harness for imbalanced tabular benchmarks.</li>
+              <li><strong>C2. Comparative Risk Estimator Bake-off:</strong> First direct empirical comparison of
+                calibration vs. ensemble variance vs. conformal bounds under tabular shift.</li>
+              <li><strong>C3. Cost-Sensitive Selective Policy:</strong> Risk-Coverage optimization routing ambiguous
+                decisions to human analysts while preserving &ge;85% automated clearance.</li>
+              <li><strong>C4. Shift Detection vs. Decision Risk Disentanglement:</strong> Clarifying that OOD feature
+                status does not imply misclassification risk, and vice versa.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUADRANT 4: EVALUATION PLAN -->
+      <section class="quadrant q4">
+        <div class="quadrant-header">
+          <div class="quadrant-title">
+            <span>Quadrant 4</span>
+            <span>&bull;</span>
+            <span>Comprehensive Evaluation Plan</span>
+          </div>
+          <div class="quadrant-badge">Validation &amp; Metrics</div>
+        </div>
+        <div class="quadrant-body">
+          <div>
+            <h3 class="subhead">Evaluation Protocol &amp; Shift Testbeds</h3>
+            <p>
+              Trained exclusively on chronologically early In-Distribution (ID) transactions (N = 199,365). Evaluated
+              across ID holdout and 4 distinct shifted test partitions under varying perturbation intensities <span
+                class="math-formula">&epsilon; &in; [0.1, 2.0]</span>.
+            </p>
+          </div>
+
+          <div class="metric-tags">
+            <div class="metric-tag">
+              <span class="metric-tag-name">AUPRC &amp; AUROC</span>
+              <span class="metric-tag-desc">Discriminative power under 0.17% fraud prevalence</span>
+            </div>
+            <div class="metric-tag">
+              <span class="metric-tag-name">Expected Calib. Error</span>
+              <span class="metric-tag-desc">ECE = &Sigma;
+                (|B<sub>k</sub>|/N)|acc(B<sub>k</sub>)-conf(B<sub>k</sub>)|</span>
+            </div>
+            <div class="metric-tag">
+              <span class="metric-tag-name">AURC (Risk-Coverage)</span>
+              <span class="metric-tag-desc">Area Under Risk-Coverage for c &in; [0.6, 1.0]</span>
+            </div>
+            <div class="metric-tag">
+              <span class="metric-tag-name">Cost-Weighted Loss</span>
+              <span class="metric-tag-desc">L = $100&bull;FN + $5&bull;FP + $2&bull;Defer</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="subhead">Ablation &amp; Robustness Matrix</h3>
+            <ul>
+              <li><strong>Shift Intensity:</strong> Monitor degradation curves across severity scales <span
+                  class="math-formula">&sigma; &in; {0.2, 0.5, 1.0, 2.0}</span>.</li>
+              <li><strong>Rejection Budget Trade-off:</strong> Sweep deferral fraction from 0% to 25% to map the Pareto
+                frontier.</li>
+              <li><strong>Uncertainty Decomposition:</strong> Compare calibration alone vs ensemble variance vs hybrid
+                risk gating.</li>
+            </ul>
+          </div>
+
+          <div class="success-box">
+            <div class="success-box-title">
+              <span>&#10004;</span>
+              <span>Concrete Success Criteria</span>
+            </div>
+            <p style="color: #064e3b; font-size: 10.8px;">
+              <strong>1. &ge;30% Error Reduction:</strong> Selective abstention cuts shift-induced loss by &ge;30% over
+              vanilla baselines.<br>
+              <strong>2. High Throughput:</strong> Retains <strong>&ge;85% automated decision coverage</strong> under
+              moderate shift.<br>
+              <strong>3. Calibrated Reliability:</strong> Post-calibration ECE &lt; 0.05 across shifted test sets (50%
+              improvement).
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+
+</html>
