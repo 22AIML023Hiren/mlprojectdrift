@@ -1,0 +1,7 @@
+Testbed,N_Samples,Fraud_Rate,Vanilla_AUPRC,Calibrated_ECE,Vanilla_Loss_$,Selective_Loss_$,Loss_Reduction_%,AURC,Corr_Risk_to_Error,Corr_OOD_to_Error
+Clean_ID,1500,0.333%,1.0,0.001,100.0,100.0,0.0,0.0,0.144,0.045
+Covariate_Mild,1500,0.333%,0.9111,0.0013,200.0,142.0,29.0,0.0,0.171,0.063
+Covariate_Severe,1500,0.333%,0.5831,0.0039,205.0,444.0,0.0,0.0001,0.12,0.039
+Subpopulation_HighAmount,225,0.889%,1.0,0.0025,100.0,16.0,84.0,0.0,0.359,0.114
+Prevalence_Shift,200,2.500%,1.0,0.0067,100.0,28.0,72.0,0.0,0.273,0.118
+Concept_Drift,1500,0.333%,0.0093,0.0034,500.0,492.0,1.6,0.0031,0.057,0.099

@@ -9,8 +9,8 @@
 | **Phase 3** | Baseline Classifiers Training | Logistic Regression, Random Forest, LightGBM, and Tabular MLP | **Complete** |
 | **Phase 4** | Uncertainty Quantification & Calibration | Platt/Isotonic calibration, ensemble variance, and conformal prediction | **Complete** |
 | **Phase 5** | Risk-Aware Selective Classification | Risk-gated decision engine, abstention thresholds, and triage queue | **Complete** |
-| **Phase 6** | Comprehensive Evaluation & Analysis | AURC curves, ECE calibration, cost analysis, and shift disentanglement | Ready |
-| **Phase 7** | Final Project Packaging & Poster Delivery | LaTeX paper, presentation artifacts, and code release | Planned |
+| **Phase 6** | Comprehensive Evaluation & Analysis | AURC curves, ECE calibration, cost analysis, and shift disentanglement | **Complete** |
+| **Phase 7** | Final Project Packaging & Poster Delivery | LaTeX paper, presentation artifacts, and code release | Ready |
 
 ---
 

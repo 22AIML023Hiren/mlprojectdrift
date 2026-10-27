@@ -1,0 +1,7 @@
+testbed,spearman_decision_risk_error,spearman_ood_distance_error
+Clean_ID,0.1436,0.0445
+Covariate_Mild,0.1709,0.063
+Covariate_Severe,0.1198,0.0393
+Subpopulation_HighAmount,0.3591,0.1142
+Prevalence_Shift,0.2734,0.1185
+Concept_Drift,0.057,0.0992

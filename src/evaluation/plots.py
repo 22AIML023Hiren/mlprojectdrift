@@ -143,3 +143,89 @@ def plot_shift_resilience_comparison(
     plt.savefig(out_path)
     plt.close()
     print(f"[Plotting] Saved Shift Resilience Comparison plot to {out_path}")
+
+
+def plot_disentanglement_analysis(
+    disentangle_df: pd.DataFrame,
+    save_path: Optional[str] = None
+) -> None:
+    """
+    Plots Spearman rank correlation comparing:
+    1. Composite Decision Risk vs. Error
+    2. Feature OOD Anomaly Distance vs. Error
+    Proves that decision risk unreliability strongly outperforms pure feature shift detection.
+    """
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = save_path or (RESULTS_DIR / "disentanglement_correlation_comparison.png")
+
+    testbeds = disentangle_df["testbed"].values
+    corr_risk = disentangle_df["spearman_decision_risk_error"].values
+    corr_ood = disentangle_df["spearman_ood_distance_error"].values
+
+    x = np.arange(len(testbeds))
+    width = 0.35
+
+    fig, ax = plt.subplots(figsize=(9, 4.5), dpi=300)
+    rects1 = ax.bar(x - width/2, corr_risk, width, label="Decision Risk Correlation ρ(R, Error)", color="#2563eb")
+    rects2 = ax.bar(x + width/2, corr_ood, width, label="Feature OOD Distance ρ(OOD, Error)", color="#f59e0b")
+
+    ax.set_ylabel("Spearman Rank Correlation (ρ)", fontsize=10, fontweight="semibold")
+    ax.set_title("Shift vs. Decision Risk Disentanglement: Predictive Unreliability vs. Feature Novelty", fontsize=11, fontweight="bold", pad=10)
+    ax.set_xticks(x)
+    ax.set_xticklabels(testbeds, rotation=15, ha="right", fontsize=9)
+    ax.axhline(0, color="gray", linestyle="--", linewidth=0.8)
+    ax.legend(frameon=True, fontsize=9)
+
+    # Add numeric labels on top of bars
+    for rect in rects1:
+        height = rect.get_height()
+        ax.annotate(f"{height:.2f}", xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3 if height >= 0 else -10), textcoords="offset points",
+                    ha="center", va="bottom", fontsize=8, fontweight="bold")
+    for rect in rects2:
+        height = rect.get_height()
+        ax.annotate(f"{height:.2f}", xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3 if height >= 0 else -10), textcoords="offset points",
+                    ha="center", va="bottom", fontsize=8)
+
+    plt.tight_layout()
+    plt.savefig(out_path)
+    plt.close()
+    print(f"[Plotting] Saved Disentanglement Comparison plot to {out_path}")
+
+
+def plot_multi_model_aurc_comparison(
+    multi_model_df: pd.DataFrame,
+    save_path: Optional[str] = None
+) -> None:
+    """
+    Plots multi-model AURC comparison across distribution shifts.
+    """
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = save_path or (RESULTS_DIR / "multi_model_aurc_comparison.png")
+
+    fig, ax = plt.subplots(figsize=(9.5, 5.0), dpi=300)
+
+    models = multi_model_df["model"].unique()
+    testbeds = multi_model_df["testbed"].unique()
+    x = np.arange(len(testbeds))
+    n_models = len(models)
+    width = 0.8 / n_models
+
+    colors = ["#3b82f6", "#10b981", "#f97316", "#8b5cf6"]
+
+    for i, model_name in enumerate(models):
+        sub_df = multi_model_df[multi_model_df["model"] == model_name]
+        aurcs = [sub_df[sub_df["testbed"] == tb]["aurc"].values[0] if len(sub_df[sub_df["testbed"] == tb]) > 0 else 0.0 for tb in testbeds]
+        ax.bar(x + (i - n_models / 2 + 0.5) * width, aurcs, width, label=model_name, color=colors[i % len(colors)])
+
+    ax.set_ylabel("Area Under Risk-Coverage (AURC, Lower is Better)", fontsize=10, fontweight="semibold")
+    ax.set_title("Multi-Model Selective Classification Efficiency (AURC) Under Shift", fontsize=11, fontweight="bold", pad=10)
+    ax.set_xticks(x)
+    ax.set_xticklabels(testbeds, rotation=15, ha="right", fontsize=9)
+    ax.legend(frameon=True, fontsize=9)
+
+    plt.tight_layout()
+    plt.savefig(out_path)
+    plt.close()
+    print(f"[Plotting] Saved Multi-Model AURC comparison to {out_path}")
