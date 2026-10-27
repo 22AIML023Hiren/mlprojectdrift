@@ -1,0 +1,4 @@
+Method,Test_ECE,ECE_Reduction_%,Brier_Score,Mean_Confidence,Empirical_Fraud_Rate
+Raw_Uncalibrated,0.00308,0.0,0.002227,0.00112,0.00333
+Isotonic,0.00096,68.7,0.00042,0.00252,0.00333
+Platt_Scaling,0.00219,29.1,0.001067,0.00219,0.00333

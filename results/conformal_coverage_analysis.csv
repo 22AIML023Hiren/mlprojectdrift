@@ -1,0 +1,5 @@
+Alpha,Target_Coverage_%,Empirical_Coverage_%,Coverage_Met,Single_Label_Ratio_%,Double_Label_Ambiguous_%,Empty_Set_Ratio_%,Quantile_Threshold
+0.01,99.0%,99.13%,True,99.13%,0.00%,0.87%,0.01999
+0.05,95.0%,96.67%,True,96.67%,0.00%,3.33%,0.0
+0.1,90.0%,96.67%,True,96.67%,0.00%,3.33%,0.0
+0.15,85.0%,96.67%,True,96.67%,0.00%,3.33%,0.0
