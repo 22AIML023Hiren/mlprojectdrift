@@ -10,7 +10,7 @@
 | **Phase 4** | Uncertainty Quantification & Calibration | Platt/Isotonic calibration, ensemble variance, and conformal prediction | **Complete** |
 | **Phase 5** | Risk-Aware Selective Classification | Risk-gated decision engine, abstention thresholds, and triage queue | **Complete** |
 | **Phase 6** | Comprehensive Evaluation & Analysis | AURC curves, ECE calibration, cost analysis, and shift disentanglement | **Complete** |
-| **Phase 7** | Final Project Packaging & Poster Delivery | LaTeX paper, presentation artifacts, and code release | Ready |
+| **Phase 7** | Final Project Packaging & Poster Delivery | LaTeX paper, presentation artifacts, and code release | **Complete** |
 
 ---
 

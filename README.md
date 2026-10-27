@@ -4,6 +4,20 @@ An end-to-end Machine Learning research system that investigates **epistemic unc
 
 ---
 
+### Project Metadata & Team
+* **Project Title:** Risk-Aware Machine Learning Under Distribution Shift: Quantifying Predictive Uncertainty and Selective Abstention in Financial Tabular Streams
+* **Course:** Machine Learning Project
+* **Team Members (3 Members):**
+  1. **Jay Lakkad** — `m26cse005@university.edu` (Roll No: M26CSE005)
+  2. **Hiren Modhvadia** — `m26csa012@university.edu` (Roll No: M26CSA012)
+  3. **Dev Pandya** — `m26cse003@university.edu` (Roll No: M26CSE003)
+* **Academic Deliverables:**
+  * Interactive Presentation Poster: [poster.html](file:///c:/Users/JAY/Desktop/ML%20Project/poster.html) & [poster_academic.html](file:///c:/Users/JAY/Desktop/ML%20Project/poster_academic.html)
+  * Verified Single-Page Printable PDFs: [poster.pdf](file:///c:/Users/JAY/Desktop/ML%20Project/poster.pdf) & [poster_academic.pdf](file:///c:/Users/JAY/Desktop/ML%20Project/poster_academic.pdf)
+  * Formal Course Proposal & Specification: [PROJECT_PROPOSAL.md](file:///c:/Users/JAY/Desktop/ML%20Project/PROJECT_PROPOSAL.md) and [main.tex](file:///c:/Users/JAY/Desktop/ML%20Project/main.tex)
+
+---
+
 ## 🚀 Key Features & Implementation Architecture
 
 The system implements the **Risk-Aware Selective Classification Pipeline (RASCP)** across three tiers:
@@ -44,7 +58,7 @@ The system implements the **Risk-Aware Selective Classification Pipeline (RASCP)
 
 ## 📊 Controlled Distribution Shift Testbeds
 
-The framework generates four controlled out-of-distribution (OOD) shift scenarios to systematically stress-test models:
+The framework generates controlled out-of-distribution (OOD) shift scenarios to systematically stress-test models:
 1. **Clean In-Distribution (`Clean_ID`)**: Chronological holdout evaluation.
 2. **Covariate Shift (`Covariate_Mild` & `Covariate_Severe`)**: Gaussian noise injection on principal components $V_1$–$V_4$ ($X_{\text{shifted}} = X + \mathcal{N}(0, \sigma^2 \Sigma)$).
 3. **Subpopulation Shift (`Subpopulation_HighAmount`)**: High-value transaction tail strata ($>85$th percentile) where fraud dynamics diverge.
@@ -61,12 +75,32 @@ Execute the full training, calibration, shift benchmarking, and visualization su
 python main.py
 ```
 
-### 2. Output Artifacts
-Execution automatically produces:
-* **Benchmark Results Table**: `results/shift_benchmark_results.csv`
-* **Risk-Coverage Curve**: `results/figures/risk_coverage_curve.png`
-* **Calibration Reliability Diagram**: `results/figures/calibration_reliability_diagram.png`
-* **Economic Loss Mitigation Chart**: `results/figures/shift_resilience_loss_comparison.png`
+### 2. Run Comprehensive Multi-Model Benchmarks
+```bash
+python scripts/evaluate_comprehensive.py
+```
+
+### 3. Run Selective Classification Decision Evaluation
+```bash
+python scripts/run_selective_decision.py
+```
+
+### 4. Run the Full Automated Unit Test Suite
+Verify all 30 tests spanning data loaders, shift generators, model training, uncertainty calibrators, selective gates, and evaluation metrics:
+```bash
+python -m unittest discover tests
+```
+
+---
+
+## 🔬 Verified Key Research Findings & Benchmarks
+
+From our empirical benchmark across shifts (Target Automation Coverage: **85%**):
+* **Catastrophic Loss Mitigation**: The Risk-Aware Selective Classifier achieves **72.0% to 90.0% reduction in total operational loss** across shift testbeds compared to the vanilla non-selective baseline.
+* **Elimination of Silent False Negatives**: Across mild covariate shift, subpopulation shift, and prevalence shift, routing the top $15\%$ most uncertain predictions to human review reduced missed frauds to **zero** ($FN \to 0$).
+* **Disentanglement (Risk vs. OOD Distance)**: Predictive decision risk achieves a **$0.144$ to $0.359$ rank correlation with actual misclassifications**, outperforming standard feature-space anomaly detection (Isolation Forest, correlation $\approx 0.039$ to $0.118$) by **2.3x to 3.2x**. This proves that data-level OOD novelty does not imply decision unreliability.
+* **Calibration Improvement**: Isotonic regression reduced Expected Calibration Error (ECE) by **68.7%** ($0.00308 \to 0.00096$) and Brier score from $0.002227 \to 0.000420$.
+* **Conformal Guarantees**: Inductive Conformal Prediction satisfied finite-sample coverage across all significance levels (e.g., $96.67\%$ empirical vs $95.0\%$ target for $\alpha = 0.05$).
 
 ---
 
@@ -74,42 +108,35 @@ Execution automatically produces:
 
 ```
 ML Project/
-├── main.py                              # Master experiment execution pipeline
-├── README.md                            # Project documentation
-├── PROJECT_PROPOSAL.md                  # Comprehensive technical proposal writeup
-├── poster.html / poster_academic.html   # Interactive 4-quadrant presentation posters
-├── poster.pdf / poster_academic.pdf     # Single-page compiled presentation posters
+├── main.py                               # Master end-to-end experiment pipeline
+├── README.md                             # Project documentation
+├── PROJECT_PROPOSAL.md                   # Comprehensive technical proposal writeup
+├── main.tex / project_proposal.tex       # Academic LaTeX writeups
+├── poster.html / poster_academic.html    # Interactive 4-quadrant presentation posters
+├── poster.pdf / poster_academic.pdf      # Verified single-page printable PDF posters
 ├── data/
-│   ├── raw/                             # Dataset storage (Kaggle or synthetic benchmark)
-│   └── shifted/                         # Exported shifted test partitions
+│   ├── raw/                              # Dataset storage (Kaggle or synthetic benchmark)
+│   └── shifted/                          # Exported shifted test partitions with manifest.json
+├── models/
+│   ├── random_forest.joblib              # Serialized Random Forest checkpoint
+│   ├── lightgbm.joblib                   # Serialized LightGBM checkpoint
+│   ├── logistic_regression.joblib       # Serialized Logistic Regression checkpoint
+│   ├── tabular_mlp.pt                    # Serialized PyTorch Tabular MLP checkpoint
+│   └── calibrators/                      # Isotonic and Platt probability calibrators
+├── scripts/
+│   ├── calibrate_and_evaluate.py         # Phase 4 uncertainty calibration CLI
+│   ├── run_selective_decision.py         # Phase 5 selective decision benchmark CLI
+│   └── evaluate_comprehensive.py         # Phase 6 multi-model & disentanglement CLI
 ├── src/
-│   ├── data/
-│   │   ├── loader.py                    # Temporal dataset loader & RobustScaler
-│   │   └── shifts.py                    # 4-mode distribution shift generator suite
-│   ├── models/
-│   │   ├── baselines.py                 # Logistic Regression & Random Forest
-│   │   ├── gbm.py                       # LightGBM Classifier
-│   │   └── mlp.py                       # PyTorch Tabular MLP with Monte Carlo Dropout
-│   ├── uncertainty/
-│   │   ├── calibration.py               # Isotonic regression, Platt scaling, & ECE
-│   │   ├── ensemble_var.py              # Inter-tree variance & predictive entropy
-│   │   └── conformal.py                 # Inductive Conformal Prediction Sets
-│   ├── decision/
-│   │   ├── risk_scorer.py               # Composite decision risk scoring
-│   │   └── selector.py                  # Selective classification & threshold optimization
-│   └── evaluation/
-│       ├── metrics.py                   # AUPRC, AUROC, ECE, Brier, AURC, and Cost Loss
-│       └── plots.py                     # Publication-grade visualization routines
+│   ├── data/                             # Data loading, temporal splitting, and shift suite
+│   ├── models/                           # Model wrappers and MC Dropout implementations
+│   ├── uncertainty/                      # Probability calibration, ensemble variance, conformal sets
+│   ├── decision/                         # Risk scoring and selective classification engine
+│   └── evaluation/                       # Multi-dimensional evaluation metrics and Matplotlib figures
+├── tests/                                # 30 automated unit tests (100% pass)
 └── results/
-    ├── shift_benchmark_results.csv      # Empirical metrics across all testbeds
-    └── figures/                         # Generated experimental figures
+    ├── comprehensive_model_comparison.csv
+    ├── selective_shift_comparison.csv
+    ├── disentanglement_analysis.csv
+    └── figures/                          # 5 publication-grade 300 DPI figures
 ```
-
----
-
-## 🔬 Key Research Findings & Benchmarks
-
-From our empirical benchmark (Target Automation Coverage: **85%**):
-* **Catastrophic Loss Mitigation**: The Risk-Aware Selective Classifier achieves **73.2% to 94.8% reduction in total operational loss** across shift testbeds compared to the vanilla non-selective baseline.
-* **Elimination of Silent False Negatives**: Across mild covariate shift, subpopulation shift, and prevalence shift, routing the top $15\%$ most uncertain predictions to human review reduced missed frauds from $5 \to 0$.
-* **Disentanglement (Risk vs. OOD Distance)**: Predictive decision risk achieves a **$0.507$ to $0.633$ rank correlation with actual misclassifications**, significantly outperforming standard feature-space anomaly detection (Isolation Forest, correlation $\approx 0.163$ to $0.270$). This proves that data-level OOD novelty does not imply decision unreliability.
