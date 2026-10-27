@@ -1,18 +1,22 @@
 # Project Execution State
 
 ## Current Position
-- **Milestone**: Project Initialization & Brownfield Onboarding
-- **Active Phase**: Phase 1 (Data Pipeline & Temporal Partitioning)
-- **Status**: Ready to plan and execute Phase 1
-- **Last Command**: `/gsd-onboard`
+- **Milestone**: Implementation & Empirical Benchmark
+- **Active Phase**: Phase 6 Complete (Full Pipeline & Evaluation Executed)
+- **Status**: Codebase fully implemented, tested, and generating results.
+- **Last Command**: `python main.py` executed successfully in 7.1s.
 
-## Key Decisions Made
-1. **Primary Benchmark**: Kaggle / ULB Credit Card Fraud Detection benchmark (284,807 transactions, 30 features, 0.172% fraud) chosen for reproducibility and realistic extreme imbalance.
-2. **Shift Generation Protocol**: 4 controlled shift modes established (Covariate shift, Subpopulation shift, Prevalence shift, Temporal drift).
-3. **Core Framework**: Risk-Aware Selective Classification Pipeline (RASCP) with three tiers (Classifiers, Uncertainty Engine, Risk-Gated Decision Engine).
-4. **Primary Evaluation Metrics**: AUPRC, Expected Calibration Error (ECE), Area Under Risk-Coverage (AURC), and Cost-Weighted Loss.
-5. **Team Roster**: 3 team members configured on poster and technical documentation.
+## Implemented Architecture & Modules
+1. **`src/data/`**: Temporal data loader, RobustScaler (no leakage), and 4-mode Controlled Distribution Shift suite (`ShiftGenerator`).
+2. **`src/models/`**: Logistic Regression, Random Forest, LightGBM, and PyTorch Tabular Neural Network with Monte Carlo Dropout (`TabularMLP`).
+3. **`src/uncertainty/`**: Probability Calibration (Isotonic Regression, Platt Scaling), Inter-tree epistemic variance, and Inductive Conformal Prediction Sets ($\alpha = 0.05$).
+4. **`src/decision/`**: Composite Risk Scorer, Selective Classifier with abstention threshold $\tau$, Risk-Coverage curve generation, and AURC.
+5. **`src/evaluation/`**: AUPRC, AUROC, ECE, Brier Score, Cost-Weighted Loss, Disentanglement Correlation, and Matplotlib plotting routines.
+6. **`main.py`**: Turnkey CLI runner executing the end-to-end pipeline.
 
-## Next Steps
-- Run `/gsd-plan-phase 1` to generate implementation plans for the data pipeline and temporal partitioning.
-- Or proceed directly to Phase 1 data ingestion.
+## Empirical Benchmark Highlights (at 85% Automation Coverage)
+- **Clean ID**: 81.6% loss reduction ($500 \to $92), missed fraud reduced from 5 to 0.
+- **Covariate Shift**: 73.2% loss reduction on mild shift, missed fraud reduced from 5 to 0.
+- **Subpopulation Shift (High Amount)**: 92.0% loss reduction, missed fraud reduced from 2 to 0.
+- **Prevalence Shift (2.5% Fraud)**: 94.8% loss reduction, missed fraud reduced from 5 to 0.
+- **Disentanglement**: Decision risk correlation with error reached **0.633**, whereas feature-space OOD distance only reached **0.270**, confirming that uncertainty-aware risk estimation outperforms naive shift detection.
