@@ -1,0 +1,12 @@
+{
+  "workflow": {
+    "auto_commit": true,
+    "model_profile": "quality",
+    "verification_level": "standard"
+  },
+  "project": {
+    "name": "Risk-Aware Machine Learning Under Distribution Shift",
+    "type": "machine-learning",
+    "primary_language": "python"
+  }
+}
