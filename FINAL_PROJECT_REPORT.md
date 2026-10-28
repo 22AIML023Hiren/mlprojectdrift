@@ -409,3 +409,4 @@ Start-Process poster_academic.html
 
 ## Conclusion & Project Sign-Off
 This project provides a rigorous, production-ready machine learning framework for addressing distribution shifts in tabular streams. By coupling predictive modeling with post-hoc probability calibration, epistemic disagreement, inductive conformal prediction, and cost-weighted selective abstention, the system prevents catastrophic errors, eliminates unrecovered fraud, and establishes an optimal balance between operational throughput and financial safety.
+
