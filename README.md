@@ -12,9 +12,9 @@ An end-to-end Machine Learning research system that investigates **epistemic unc
   2. **Hiren Modhvadia** — `m26csa012@university.edu` (Roll No: M26CSA012)
   3. **Dev Pandya** — `m26cse003@university.edu` (Roll No: M26CSE003)
 * **Academic Deliverables:**
-  * Interactive Presentation Poster: [poster.html](file:///c:/Users/JAY/Desktop/ML%20Project/poster.html) & [poster_academic.html](file:///c:/Users/JAY/Desktop/ML%20Project/poster_academic.html)
-  * Verified Single-Page Printable PDFs: [poster.pdf](file:///c:/Users/JAY/Desktop/ML%20Project/poster.pdf) & [poster_academic.pdf](file:///c:/Users/JAY/Desktop/ML%20Project/poster_academic.pdf)
-  * Formal Course Proposal & Specification: [PROJECT_PROPOSAL.md](file:///c:/Users/JAY/Desktop/ML%20Project/PROJECT_PROPOSAL.md) and [main.tex](file:///c:/Users/JAY/Desktop/ML%20Project/main.tex)
+  * Interactive Presentation Poster: [poster.html](poster.html) & [poster_academic.html](poster_academic.html)
+  * Verified Single-Page Printable PDFs: [poster.pdf](poster.pdf) & [poster_academic.pdf](poster_academic.pdf)
+  * Formal Course Proposal & Specification: [PROJECT_PROPOSAL.md](PROJECT_PROPOSAL.md) and [main.tex](main.tex)
 
 ---
 
@@ -85,7 +85,17 @@ python scripts/evaluate_comprehensive.py
 python scripts/run_selective_decision.py
 ```
 
-### 4. Run the Full Automated Unit Test Suite
+### 4. Run Bonus 3: Shift-Severity Sweep Experiment
+Sweeps covariate shift severity levels `[0.0, 0.25, 0.5, 1.0, 2.0, 4.0]` and computes Spearman correlations between composite risk / OOD scores and actual misclassification errors. Outputs figure, CSV, and analysis markdown.
+```bash
+python scripts/bonus_severity_sweep.py
+```
+Outputs saved to:
+- `results/bonus_severity_sweep.csv`
+- `results/bonus_severity_sweep_analysis.md`
+- `results/figures/bonus_severity_sweep.png`
+
+### 5. Run the Full Automated Unit Test Suite
 Verify all 30 tests spanning data loaders, shift generators, model training, uncertainty calibrators, selective gates, and evaluation metrics:
 ```bash
 python -m unittest discover tests
@@ -126,7 +136,8 @@ ML Project/
 ├── scripts/
 │   ├── calibrate_and_evaluate.py         # Phase 4 uncertainty calibration CLI
 │   ├── run_selective_decision.py         # Phase 5 selective decision benchmark CLI
-│   └── evaluate_comprehensive.py         # Phase 6 multi-model & disentanglement CLI
+│   ├── evaluate_comprehensive.py         # Phase 6 multi-model & disentanglement CLI
+│   └── bonus_severity_sweep.py           # Bonus 3: shift-severity sweep experiment
 ├── src/
 │   ├── data/                             # Data loading, temporal splitting, and shift suite
 │   ├── models/                           # Model wrappers and MC Dropout implementations
@@ -138,5 +149,7 @@ ML Project/
     ├── comprehensive_model_comparison.csv
     ├── selective_shift_comparison.csv
     ├── disentanglement_analysis.csv
-    └── figures/                          # 5 publication-grade 300 DPI figures
+    ├── bonus_severity_sweep.csv          # Bonus 3: severity vs. correlation results
+    ├── bonus_severity_sweep_analysis.md  # Bonus 3: methodology, results & interpretation
+    └── figures/                          # 5 publication-grade 300 DPI figures + bonus figure
 ```
