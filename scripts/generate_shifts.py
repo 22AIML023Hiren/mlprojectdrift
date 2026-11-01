@@ -27,6 +27,8 @@ def main():
     shifted_dir.mkdir(parents=True, exist_ok=True)
 
     # 1. Load dataset & get clean test split
+    # NOTE: get_chronological_splits applies RobustScaler to X_test when scale_features=True (default).
+    # Therefore the exported shift CSVs contain already scaled features, matching the evaluation pipeline expectations.
     print("[1/4] Loading dataset and extracting chronological test partition...")
     df = load_dataset(n_synthetic_samples=40000, random_state=42)
     splits = get_chronological_splits(df, train_ratio=0.70, calib_ratio=0.15, test_ratio=0.15)
