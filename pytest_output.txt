@@ -1,0 +1,48 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-9.2.0, pluggy-1.7.0 -- C:\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\leena\Downloads\ml project\ML Project
+plugins: anyio-4.3.0
+collecting ... collected 30 items / 1 error
+
+=================================== ERRORS ====================================
+______________________ ERROR collecting test_output.txt _______________________
+C:\Python312\Lib\pathlib.py:1028: in read_text
+    return f.read()
+           ^^^^^^^^
+<frozen codecs>:322: in decode
+    ???
+E   UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+============================== warnings summary ===============================
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:64
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR test_output.txt - UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+======================== 14 warnings, 1 error in 7.46s ========================
+

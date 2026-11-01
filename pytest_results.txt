@@ -1,0 +1,425 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-9.2.0, pluggy-1.7.0 -- C:\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\leena\Downloads\ml project\ML Project
+configfile: pytest.ini
+plugins: anyio-4.3.0
+collecting ... collected 30 items
+
+tests/test_data_loader.py::TestDataPipeline::test_chronological_ordering_and_leakage PASSED [  3%]
+tests/test_data_loader.py::TestDataPipeline::test_scaler_isolation PASSED [  6%]
+tests/test_data_loader.py::TestDataPipeline::test_schema_validation PASSED [ 10%]
+tests/test_data_loader.py::TestDataPipeline::test_shift_generator_integrity PASSED [ 13%]
+tests/test_data_loader.py::TestDataPipeline::test_split_proportions PASSED [ 16%]
+tests/test_evaluation.py::TestEvaluationSuite::test_comprehensive_metrics_bounds PASSED [ 20%]
+tests/test_evaluation.py::TestEvaluationSuite::test_disentanglement_plot_generation PASSED [ 23%]
+tests/test_evaluation.py::TestEvaluationSuite::test_multi_model_aurc_plot_generation PASSED [ 26%]
+tests/test_evaluation.py::TestEvaluationSuite::test_single_class_edge_case PASSED [ 30%]
+python : Windows fatal 
+exception: access 
+violation
+At line:1 char:1
++ python -m pytest 
+tests/ -v --tb=short 
+2>&1 | Out-File 
+-FilePath pytes ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Windows fatal   
+  e...ccess violati    
+on:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+
+Current thread 
+0x00003e98 (most 
+recent call first):
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\basic.py", line 2860 
+in set_field
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\basic.py", line 3097 
+in set_label
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\basic.py", line 2189 
+in _lazy_init
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\basic.py", line 2574 
+in construct
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\basic.py", line 3758 
+in __init__
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\engine.py", line 296 
+in train
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\sklearn.py", line 
+1171 in fit
+  File "C:\Python312\Li
+b\site-packages\lightgb
+m\sklearn.py", line 
+1704 in fit
+  File "C:\Users\leena\
+Downloads\ml 
+project\ML Project\src\
+models\gbm.py", line 
+69 in fit
+  File "C:\Users\leena\
+Downloads\ml 
+project\ML Project\test
+s\test_models.py", 
+line 39 in setUpClass
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\unittest.py", line 
+157 in unittest_setup_c
+lass_fixture
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\fixtures.py", line 
+1067 in 
+call_fixture_func
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\fixtures.py", line 
+1407 in 
+pytest_fixture_setup
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_execution.py", line 
+147 in _multicall
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_manager.py", line 183 
+in _hookexec
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_caller.py", line 197 
+in __call__
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\fixtures.py", line 
+1301 in execute
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\fixtures.py", line 
+797 in 
+_get_active_fixturedef
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\fixtures.py", line 
+701 in getfixturevalue
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\fixtures.py", line 
+877 in _fillfixtures
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\python.py", line 1801 
+in setup
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\unittest.py", line 
+246 in setup
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 536 
+in setup
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 170 
+in pytest_runtest_setup
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_execution.py", line 
+147 in _multicall
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_manager.py", line 183 
+in _hookexec
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_caller.py", line 197 
+in __call__
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 250 
+in <lambda>
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 361 
+in from_call
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 249 
+in call_and_report
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 132 
+in runtestprotocol
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\runner.py", line 118 
+in 
+pytest_runtest_protocol
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_execution.py", line 
+147 in _multicall
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_manager.py", line 183 
+in _hookexec
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_caller.py", line 197 
+in __call__
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\main.py", line 411 in 
+pytest_runtestloop
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_execution.py", line 
+147 in _multicall
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_manager.py", line 183 
+in _hookexec
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_caller.py", line 197 
+in __call__
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\main.py", line 387 in 
+_main
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\main.py", line 333 in 
+wrap_session
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\main.py", line 380 in 
+pytest_cmdline_main
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_execution.py", line 
+147 in _multicall
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_manager.py", line 183 
+in _hookexec
+  File "C:\Python312\Li
+b\site-packages\pluggy\
+_caller.py", line 197 
+in __call__
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\config\__init__.py", 
+line 262 in _main
+  File "C:\Python312\Li
+b\site-packages\_pytest
+\config\__init__.py", 
+line 286 in 
+_console_main
+  File "C:\Python312\Li
+b\site-packages\pytest\
+__main__.py", line 9 
+in <module>
+  File "<frozen 
+runpy>", line 88 in 
+_run_code
+  File "<frozen 
+runpy>", line 198 in 
+_run_module_as_main
+tests/test_models.py::TestPhase3BaselineModels::test_discriminative_thresholds ERROR [ 33%]
+tests/test_models.py::TestPhase3BaselineModels::test_model_serialization ERROR [ 36%]
+tests/test_models.py::TestPhase3BaselineModels::test_probability_constraints ERROR [ 40%]
+tests/test_models.py::TestPhase3BaselineModels::test_random_forest_tree_variance ERROR [ 43%]
+tests/test_models.py::TestPhase3BaselineModels::test_tabular_mlp_mc_dropout ERROR [ 46%]
+tests/test_selective.py::TestSelectiveClassification::test_aurc_bounds_and_validity PASSED [ 50%]
+tests/test_selective.py::TestSelectiveClassification::test_cost_accounting_exactness PASSED [ 53%]
+tests/test_selective.py::TestSelectiveClassification::test_coverage_monotonicity PASSED [ 56%]
+tests/test_selective.py::TestSelectiveClassification::test_extreme_boundary_thresholds PASSED [ 60%]
+tests/test_selective.py::TestSelectiveClassification::test_selective_error_reduction PASSED [ 63%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_concept_drift_minority_selectivity PASSED [ 66%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_covariate_shift_statistical_significance PASSED [ 70%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_prevalence_shift_ratio PASSED [ 73%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_psi_metric PASSED [ 76%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_subpopulation_shift_quantiles PASSED [ 80%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_brier_score_computation PASSED [ 83%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_conformal_coverage_guarantee PASSED [ 86%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_ece_computation PASSED [ 90%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_ensemble_variance_bounds PASSED [ 93%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_isotonic_calibration_improvement PASSED [ 96%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_platt_scaling_bounds PASSED [100%]
+
+=================================== ERRORS ====================================
+__ ERROR at setup of TestPhase3BaselineModels.test_discriminative_thresholds __
+tests\test_models.py:39: in setUpClass
+    cls.gbm.fit(cls.X_train, cls.y_train)
+src\models\gbm.py:69: in fit
+    self.model.fit(X, y)
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1704: in fit
+    super().fit(
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1171: in fit
+    self._Booster = train(
+C:\Python312\Lib\site-packages\lightgbm\engine.py:296: in train
+    booster = Booster(params=params, train_set=train_set)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3758: in __init__
+    train_set.construct()
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2574: in construct
+    self._lazy_init(
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2189: in _lazy_init
+    self.set_label(label)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3097: in set_label
+    self.set_field("label", label_array)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2860: in set_field
+    _LIB.LGBM_DatasetSetField(
+E   OSError: exception: access violation reading 0x0000000000000000
+---------------------------- Captured stdout setup ----------------------------
+[DataLoader] Chronological Split:
+  - Train: 3,500 samples (63 frauds, 1.8000%)
+  - Calib: 750 samples (20 frauds, 2.6667%)
+  - Test:  750 samples (17 frauds, 2.2667%)
+_____ ERROR at setup of TestPhase3BaselineModels.test_model_serialization _____
+tests\test_models.py:39: in setUpClass
+    cls.gbm.fit(cls.X_train, cls.y_train)
+src\models\gbm.py:69: in fit
+    self.model.fit(X, y)
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1704: in fit
+    super().fit(
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1171: in fit
+    self._Booster = train(
+C:\Python312\Lib\site-packages\lightgbm\engine.py:296: in train
+    booster = Booster(params=params, train_set=train_set)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3758: in __init__
+    train_set.construct()
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2574: in construct
+    self._lazy_init(
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2189: in _lazy_init
+    self.set_label(label)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3097: in set_label
+    self.set_field("label", label_array)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2860: in set_field
+    _LIB.LGBM_DatasetSetField(
+E   OSError: exception: access violation reading 0x0000000000000000
+___ ERROR at setup of TestPhase3BaselineModels.test_probability_constraints ___
+tests\test_models.py:39: in setUpClass
+    cls.gbm.fit(cls.X_train, cls.y_train)
+src\models\gbm.py:69: in fit
+    self.model.fit(X, y)
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1704: in fit
+    super().fit(
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1171: in fit
+    self._Booster = train(
+C:\Python312\Lib\site-packages\lightgbm\engine.py:296: in train
+    booster = Booster(params=params, train_set=train_set)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3758: in __init__
+    train_set.construct()
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2574: in construct
+    self._lazy_init(
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2189: in _lazy_init
+    self.set_label(label)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3097: in set_label
+    self.set_field("label", label_array)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2860: in set_field
+    _LIB.LGBM_DatasetSetField(
+E   OSError: exception: access violation reading 0x0000000000000000
+_ ERROR at setup of TestPhase3BaselineModels.test_random_forest_tree_variance _
+tests\test_models.py:39: in setUpClass
+    cls.gbm.fit(cls.X_train, cls.y_train)
+src\models\gbm.py:69: in fit
+    self.model.fit(X, y)
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1704: in fit
+    super().fit(
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1171: in fit
+    self._Booster = train(
+C:\Python312\Lib\site-packages\lightgbm\engine.py:296: in train
+    booster = Booster(params=params, train_set=train_set)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3758: in __init__
+    train_set.construct()
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2574: in construct
+    self._lazy_init(
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2189: in _lazy_init
+    self.set_label(label)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3097: in set_label
+    self.set_field("label", label_array)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2860: in set_field
+    _LIB.LGBM_DatasetSetField(
+E   OSError: exception: access violation reading 0x0000000000000000
+___ ERROR at setup of TestPhase3BaselineModels.test_tabular_mlp_mc_dropout ____
+tests\test_models.py:39: in setUpClass
+    cls.gbm.fit(cls.X_train, cls.y_train)
+src\models\gbm.py:69: in fit
+    self.model.fit(X, y)
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1704: in fit
+    super().fit(
+C:\Python312\Lib\site-packages\lightgbm\sklearn.py:1171: in fit
+    self._Booster = train(
+C:\Python312\Lib\site-packages\lightgbm\engine.py:296: in train
+    booster = Booster(params=params, train_set=train_set)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3758: in __init__
+    train_set.construct()
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2574: in construct
+    self._lazy_init(
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2189: in _lazy_init
+    self.set_label(label)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:3097: in set_label
+    self.set_field("label", label_array)
+C:\Python312\Lib\site-packages\lightgbm\basic.py:2860: in set_field
+    _LIB.LGBM_DatasetSetField(
+E   OSError: exception: access violation reading 0x0000000000000000
+============================== warnings summary ===============================
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:64
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_models.py::TestPhase3BaselineModels::test_discriminative_thresholds
+ERROR tests/test_models.py::TestPhase3BaselineModels::test_model_serialization
+ERROR tests/test_models.py::TestPhase3BaselineModels::test_probability_constraints
+ERROR tests/test_models.py::TestPhase3BaselineModels::test_random_forest_tree_variance
+ERROR tests/test_models.py::TestPhase3BaselineModels::test_tabular_mlp_mc_dropout
+================== 25 passed, 14 warnings, 5 errors in 9.17s ==================
