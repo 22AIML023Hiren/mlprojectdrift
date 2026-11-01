@@ -128,7 +128,9 @@ class TabularMLP:
             mean_probs: Average predicted probabilities [N, 2]
             variance: Predictive epistemic variance of positive class [N]
         """
-        # Keep dropout active during evaluation
+        # Preserve original training/eval mode
+        original_mode = self.net.training
+        # Enable dropout during inference
         self.net.train()
         X_tensor = torch.tensor(X.values, dtype=torch.float32).to(self.device)
 
@@ -144,4 +146,7 @@ class TabularMLP:
         variance = np.var(mc_preds, axis=0)
 
         mean_probs = np.column_stack([1.0 - mean_p_fraud, mean_p_fraud])
+        # Restore original mode (eval if it was False)
+        if not original_mode:
+            self.net.eval()
         return mean_probs, variance
