@@ -1,0 +1,101 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.4, pytest-9.2.0, pluggy-1.7.0 -- C:\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\leena\Downloads\ml project\ML Project
+configfile: pytest.ini
+plugins: anyio-4.3.0
+collecting ... collected 30 items
+
+tests/test_data_loader.py::TestDataPipeline::test_chronological_ordering_and_leakage PASSED [  3%]
+tests/test_data_loader.py::TestDataPipeline::test_scaler_isolation PASSED [  6%]
+tests/test_data_loader.py::TestDataPipeline::test_schema_validation PASSED [ 10%]
+tests/test_data_loader.py::TestDataPipeline::test_shift_generator_integrity PASSED [ 13%]
+tests/test_data_loader.py::TestDataPipeline::test_split_proportions PASSED [ 16%]
+tests/test_evaluation.py::TestEvaluationSuite::test_comprehensive_metrics_bounds PASSED [ 20%]
+tests/test_evaluation.py::TestEvaluationSuite::test_disentanglement_plot_generation PASSED [ 23%]
+tests/test_evaluation.py::TestEvaluationSuite::test_multi_model_aurc_plot_generation FAILED [ 26%]
+tests/test_evaluation.py::TestEvaluationSuite::test_single_class_edge_case PASSED [ 30%]
+tests/test_models.py::TestPhase3BaselineModels::test_discriminative_thresholds PASSED [ 33%]
+tests/test_models.py::TestPhase3BaselineModels::test_model_serialization PASSED [ 36%]
+tests/test_models.py::TestPhase3BaselineModels::test_probability_constraints PASSED [ 40%]
+tests/test_models.py::TestPhase3BaselineModels::test_random_forest_tree_variance PASSED [ 43%]
+tests/test_models.py::TestPhase3BaselineModels::test_tabular_mlp_mc_dropout PASSED [ 46%]
+tests/test_selective.py::TestSelectiveClassification::test_aurc_bounds_and_validity PASSED [ 50%]
+tests/test_selective.py::TestSelectiveClassification::test_cost_accounting_exactness PASSED [ 53%]
+tests/test_selective.py::TestSelectiveClassification::test_coverage_monotonicity PASSED [ 56%]
+tests/test_selective.py::TestSelectiveClassification::test_extreme_boundary_thresholds PASSED [ 60%]
+tests/test_selective.py::TestSelectiveClassification::test_selective_error_reduction PASSED [ 63%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_concept_drift_minority_selectivity PASSED [ 66%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_covariate_shift_statistical_significance PASSED [ 70%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_prevalence_shift_ratio PASSED [ 73%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_psi_metric PASSED [ 76%]
+tests/test_shifts.py::TestPhase2DistributionShifts::test_subpopulation_shift_quantiles PASSED [ 80%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_brier_score_computation PASSED [ 83%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_conformal_coverage_guarantee PASSED [ 86%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_ece_computation PASSED [ 90%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_ensemble_variance_bounds PASSED [ 93%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_isotonic_calibration_improvement PASSED [ 96%]
+tests/test_uncertainty.py::TestPhase4UncertaintyEngine::test_platt_scaling_bounds PASSED [100%]
+
+================================== FAILURES ===================================
+__________ TestEvaluationSuite.test_multi_model_aurc_plot_generation __________
+tests\test_evaluation.py:82: in test_multi_model_aurc_plot_generation
+    plot_multi_model_aurc_comparison(df, save_path=out_png)
+src\evaluation\plots.py:207: in plot_multi_model_aurc_comparison
+    fig, ax = plt.subplots(figsize=(9.5, 5.0), dpi=300)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\pyplot.py:1702: in subplots
+    fig = figure(**fig_kw)
+          ^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\pyplot.py:1022: in figure
+    manager = new_figure_manager(
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\pyplot.py:545: in new_figure_manager
+    return _get_backend_mod().new_figure_manager(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\backend_bases.py:3521: in new_figure_manager
+    return cls.new_figure_manager_given_figure(num, fig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\backend_bases.py:3526: in new_figure_manager_given_figure
+    return cls.FigureCanvas.new_manager(figure, num)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\backend_bases.py:1811: in new_manager
+    return cls.manager_class.create_with_canvas(cls, figure, num)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\backends\_backend_tk.py:483: in create_with_canvas
+    window = tk.Tk(className="matplotlib")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python312\Lib\tkinter\__init__.py:2346: in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   _tkinter.TclError: invalid command name "tcl_findLibrary"
+============================== warnings summary ===============================
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:64
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+..\..\..\AppData\Roaming\Python\Python312\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\leena\AppData\Roaming\Python\Python312\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_evaluation.py::TestEvaluationSuite::test_multi_model_aurc_plot_generation
+================= 1 failed, 29 passed, 14 warnings in 12.07s ==================
