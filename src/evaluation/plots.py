@@ -9,6 +9,13 @@ from pathlib import Path
 from typing import Dict, Any, List, Optional
 import numpy as np
 import pandas as pd
+import matplotlib
+# Force the non-interactive Agg backend unless the caller has explicitly set
+# MPLBACKEND (e.g. to "TkAgg" for interactive use).  This prevents a
+# _tkinter.TclError crash when running tests or scripts in headless environments.
+import os as _os
+if not _os.environ.get("MPLBACKEND"):
+    matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
